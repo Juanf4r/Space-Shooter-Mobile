@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6613378182586159593}
+  explosionPrefab: {fileID: 6828150632056143181, guid: 21d028a8d11a8a44195e7873398dd8fb, type: 3}
   health: 2
   damage: 1
   rotateSpeed: 100

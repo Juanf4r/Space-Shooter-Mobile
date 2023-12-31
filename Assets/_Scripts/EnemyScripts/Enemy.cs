@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] protected GameObject explosionPrefab;
     [SerializeField] protected float health;
     [SerializeField] protected float damage;
 
