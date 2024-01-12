@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float health;
     [SerializeField] protected float damage;
 
+    [SerializeField] protected Animator anim;
+
     public void TakeDamage(float dmg)
     {
         health -= dmg;

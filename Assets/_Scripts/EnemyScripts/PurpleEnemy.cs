@@ -41,7 +41,9 @@ public class PurpleEnemy : Enemy
 
     public override void HurtSequence()
     {
-        //animations
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Dmg"))
+            return;
+        anim.SetTrigger("Damage");
     }
 
     public override void DeathSequence()
