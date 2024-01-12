@@ -10,18 +10,19 @@ public class WinCondition : MonoBehaviour
 
     private void Update()
     {
+        if (EndGameManager.Instance.gameOver == true)
+            return;
+
         _timer += Time.deltaTime;
         if(_timer >= possibleWinTime)
         {
             for(int i = 0; i < spawner.Length; i++)
             {
                 spawner[i].SetActive(false);
+                
             }
+            EndGameManager.Instance.StartResolveFunction();
+            gameObject.SetActive(false);
         }
-        EndGameManager.Instance.StartResolveFunction();
-        gameObject.SetActive(false);
-        // create function that will check if the player survived the last spawned enemy / meteor
-        //win or lose
-        // GAME MANAGER
     }
 }

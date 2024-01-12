@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     {
         _health = maxHealth;
         healthFill.fillAmount = _health/maxHealth;
+        EndGameManager.Instance.gameOver = false;
     }
 
     public void PlayerTakeDamage(float damage)
