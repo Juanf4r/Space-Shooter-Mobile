@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FadeCanvas : MonoBehaviour
 {
     public static FadeCanvas Instance;
 
-    [SerializeField] private CanvasGroup _cGroup;
+    [SerializeField] private CanvasGroup cGroup;
+    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private Image loadingBar;
     [SerializeField] private float changevalue;
     [SerializeField] private float waitTime;
     [SerializeField] private bool fadeStarted = false;
@@ -42,11 +45,16 @@ public class FadeCanvas : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        loadingScreen.SetActive(false);
         fadeStarted = false;
 
-        while(_cGroup.alpha > 0)
+        while(cGroup.alpha > 0)
         {
-            _cGroup.alpha -= changevalue;
+            if (fadeStarted == true)
+            {
+                yield break;
+            }  
+            cGroup.alpha -= changevalue;    
             yield return new WaitForSeconds(waitTime);
         }
     }
@@ -58,13 +66,27 @@ public class FadeCanvas : MonoBehaviour
 
         fadeStarted = true;
 
-        while (_cGroup.alpha < 1)
+        while (cGroup.alpha < 1)
         {
-            _cGroup.alpha += changevalue;
+            cGroup.alpha += changevalue;
             yield return new WaitForSeconds(waitTime);
         }
-        SceneManager.LoadScene(levelName);
-        yield return new WaitForSeconds(0.1f);
+
+        AsyncOperation ao = SceneManager.LoadSceneAsync(levelName);
+        ao.allowSceneActivation = false;
+        loadingScreen.SetActive(true);
+        loadingBar.fillAmount = 0;
+
+        while(ao.isDone == false)
+        {
+            loadingBar.fillAmount = ao.progress / .9f;
+
+            if(ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+            yield return null;
+        }
         StartCoroutine(FadeIn());
     }
 
@@ -75,13 +97,27 @@ public class FadeCanvas : MonoBehaviour
 
         fadeStarted = true;
 
-        while (_cGroup.alpha < 1)
+        while (cGroup.alpha < 1)
         {
-            _cGroup.alpha += changevalue;
+            cGroup.alpha += changevalue;
             yield return new WaitForSeconds(waitTime);
         }
-        SceneManager.LoadScene(levelIndex);
-        yield return new WaitForSeconds(0.1f);
+
+        AsyncOperation ao = SceneManager.LoadSceneAsync(levelIndex);
+        ao.allowSceneActivation = false;
+        loadingScreen.SetActive(true);
+        loadingBar.fillAmount = 0;
+
+        while (ao.isDone == false)
+        {
+            loadingBar.fillAmount = ao.progress / .9f;
+
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+            yield return null;
+        }
         StartCoroutine(FadeIn());
     }
 }
