@@ -165,6 +165,9 @@ MonoBehaviour:
   explosionPrefab: {fileID: 6828150632056143181, guid: 21d028a8d11a8a44195e7873398dd8fb, type: 3}
   health: 2
   damage: 1
+  anim: {fileID: 0}
+  scoreValue: 2
+  powerUpSpawner: {fileID: 11400000, guid: b46a90cf30827f843a4edfea669b718d, type: 2}
   rotateSpeed: 100
   minSpeed: 8
   maxSpeed: 15

@@ -15,8 +15,8 @@ TagManager:
   - Enemy
   - PlayerProjectiles
   - EnemyProjectiles
-  - 
-  - 
+  - Collectibles
+  - Shield
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 384848229
+    locked: 0
+  - name: PowerUps
+    uniqueID: 1440332751
     locked: 0
   - name: Enemies
     uniqueID: 3341981963

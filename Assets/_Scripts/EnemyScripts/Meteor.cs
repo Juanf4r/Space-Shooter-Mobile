@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Meteor : Enemy
 {
+    [SerializeField] private PowerUpSpawner powerUpSpawner;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float minSpeed;
     [SerializeField] private float maxSpeed;
@@ -27,7 +28,12 @@ public class Meteor : Enemy
 
     public override void DeathSequence()
     {
+        base.DeathSequence();
         Instantiate(explosionPrefab, transform.position, transform.rotation);
+        if(powerUpSpawner != null)
+        {
+            powerUpSpawner.SpawnPowerUp(transform.position);
+        }
         Destroy(gameObject);
     }
 

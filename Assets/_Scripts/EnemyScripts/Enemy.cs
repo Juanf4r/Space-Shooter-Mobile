@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float damage;
 
     [SerializeField] protected Animator anim;
+    [SerializeField] protected int scoreValue;
 
     public void TakeDamage(float dmg)
     {
@@ -29,6 +30,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void DeathSequence()
     {
-        //do something
+        EndGameManager.Instance.UpdateScore(scoreValue);
     }
 }

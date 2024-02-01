@@ -140,6 +140,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   anim: {fileID: 3578684285669987538}
+  scoreValue: 10
   speed: 8
 --- !u!50 &7757153188369203745
 Rigidbody2D:

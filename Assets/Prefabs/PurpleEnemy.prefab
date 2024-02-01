@@ -171,6 +171,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   anim: {fileID: 5572245019411520620}
+  scoreValue: 8
   speed: 5
   shootInterval: 1
   leftCanon: {fileID: 2426848824618879872}

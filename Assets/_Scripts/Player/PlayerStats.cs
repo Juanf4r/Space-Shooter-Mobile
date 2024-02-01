@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Image healthFill;
     [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private Shield shield;
 
     void Start()
     {
@@ -22,6 +23,11 @@ public class PlayerStats : MonoBehaviour
 
     public void PlayerTakeDamage(float damage)
     {
+        if (shield.protection)
+        {
+            return;
+        }
+            
         _health -= damage;
         healthFill.fillAmount = _health / maxHealth;
 
@@ -38,6 +44,16 @@ public class PlayerStats : MonoBehaviour
             Instantiate(explosionPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+    }
+
+    public void AddHealth(int healAmount)
+    {
+        _health += healAmount;
+        if(_health >= maxHealth )
+        {
+            _health = maxHealth;
+        }
+        healthFill.fillAmount = _health / maxHealth;
     }
 
     private IEnumerator AntiSpamFunction()
