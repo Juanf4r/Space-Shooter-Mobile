@@ -1962,10 +1962,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2136160586}
     - target: {fileID: 4931439318838029669, guid: 1d299ac6547c54142b976e04600afe41, type: 3}
-      propertyPath: shieldBase.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931439318838029669, guid: 1d299ac6547c54142b976e04600afe41, type: 3}
       propertyPath: shieldBase.Array.data[0]
       value: 
       objectReference: {fileID: 1139283264}

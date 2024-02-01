@@ -14,11 +14,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Shield shield;
 
+    private PlayerShooting _playerShooting;
+
     void Start()
     {
         _health = maxHealth;
         healthFill.fillAmount = _health/maxHealth;
         EndGameManager.Instance.gameOver = false;
+        _playerShooting = GetComponent<PlayerShooting>();
     }
 
     public void PlayerTakeDamage(float damage)
@@ -36,6 +39,8 @@ public class PlayerStats : MonoBehaviour
             anim.SetTrigger("Damage");
             StartCoroutine(AntiSpamFunction());
         }
+
+        _playerShooting.DecreaseUpgrade();
         
         if (_health <= 0 )
         {

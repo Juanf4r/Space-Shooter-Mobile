@@ -13,4 +13,9 @@ public class PowerUpShield : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
