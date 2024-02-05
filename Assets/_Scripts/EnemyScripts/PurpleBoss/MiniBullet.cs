@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpHeal : MonoBehaviour
+public class MiniBullet : MonoBehaviour
 {
-    [SerializeField] private int healAmount;
-    [SerializeField] private AudioClip clipToPlay;
+    [SerializeField] private float damage;
+    [SerializeField] private float speed;
+    [SerializeField] private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb.velocity = transform.up * speed;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerStats player = collision.GetComponent<PlayerStats>();
-            player.AddHealth(healAmount);
-            AudioSource.PlayClipAtPoint(clipToPlay, transform.position, 1f);
+            collision.GetComponent<PlayerStats>().PlayerTakeDamage(damage);
             Destroy(gameObject);
         }
     }

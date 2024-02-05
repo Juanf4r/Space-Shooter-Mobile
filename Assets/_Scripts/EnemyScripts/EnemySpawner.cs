@@ -14,6 +14,10 @@ public class EnemySpawner : MonoBehaviour
     [Space(15)]
     [SerializeField] private float enemySpawnTime;
 
+    [Header("BOSS")]
+    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private WinCondition winCon;
+
     void Start()
     {
         _mainCam = Camera.main;
@@ -43,5 +47,17 @@ public class EnemySpawner : MonoBehaviour
         _maxLeft = _mainCam.ViewportToWorldPoint(new Vector2(0.15f, 0)).x;
         _maxRight = _mainCam.ViewportToWorldPoint(new Vector2(0.85f, 0)).x;
         _yPos = _mainCam.ViewportToWorldPoint(new Vector2(0, 1.1f)).y;
+    }
+
+    private void OnDisable()
+    {
+        if (winCon.CanSpawnBoss == false)
+            return;
+
+        if(bossPrefab!= null)
+        {
+            Vector2 spawnPos = _mainCam.ViewportToWorldPoint(new Vector2(0.5f, 1.2f));
+            Instantiate(bossPrefab, spawnPos, Quaternion.identity);
+        }
     }
 }

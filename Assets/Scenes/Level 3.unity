@@ -2174,6 +2174,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 327422076552264140, guid: 6f3093757a56d09429dbdb305ac0c31d, type: 3}
+      propertyPath: possibleWinTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 327422076552264140, guid: 6f3093757a56d09429dbdb305ac0c31d, type: 3}
       propertyPath: spawner.Array.data[0]
       value: 
       objectReference: {fileID: 2069869535}
