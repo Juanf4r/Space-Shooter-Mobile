@@ -873,7 +873,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -893,10 +899,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a8a8a62d-ddcf-4c4d-868a-062f4226e9a4
+  cloudProjectId: bb4da1fa-c0b6-41da-97ba-b45e85542812
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Space Shooter Mobile
+  projectName: Space-Shooter-Mobile
   organizationId: johny_2004
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
