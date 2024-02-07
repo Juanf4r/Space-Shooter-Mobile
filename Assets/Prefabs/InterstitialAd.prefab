@@ -47,4 +47,4 @@ MonoBehaviour:
   androidAdUnitId: Interstitial_Android
   iOsAdUnitId: Interstitial_iOS
   bannerAd: {fileID: 0}
-  timeToSkip: 2
+  timeToSkip: 1

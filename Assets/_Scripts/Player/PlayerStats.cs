@@ -6,26 +6,45 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
-    private float _health;
-    private bool _canPlayAnim = true;
-
     [SerializeField] private Animator anim;
     [SerializeField] private Image healthFill;
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Shield shield;
 
     private PlayerShooting _playerShooting;
+    private float _health;
+    private bool _canPlayAnim = true;
 
-    void Start()
+    public bool canTakeDmg = true;
+
+    private void OnEnable()
     {
         _health = maxHealth;
         healthFill.fillAmount = _health/maxHealth;
         EndGameManager.Instance.gameOver = false;
+        StartCoroutine(DamageProtection());
+    }
+
+    private void Start()
+    {
         _playerShooting = GetComponent<PlayerShooting>();
+        EndGameManager.Instance.RegisterPlayerStats(this);
+        EndGameManager.Instance.possibleWin = false;
+    }
+
+    private IEnumerator DamageProtection()
+    {
+        canTakeDmg = true;
+        yield return new WaitForSeconds(1.5f);
     }
 
     public void PlayerTakeDamage(float damage)
     {
+        if(canTakeDmg == false)
+        {
+            return;
+        }
+
         if (shield.protection)
         {
             return;
@@ -47,7 +66,8 @@ public class PlayerStats : MonoBehaviour
             EndGameManager.Instance.gameOver = true;
             EndGameManager.Instance.StartResolveFunction();
             Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
 

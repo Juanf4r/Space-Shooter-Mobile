@@ -21,6 +21,7 @@ public class WinCondition : MonoBehaviour
         {
             if (hasBoss == false)
             {
+                EndGameManager.Instance.possibleWin = true;
                 EndGameManager.Instance.StartResolveFunction();
             }
             else

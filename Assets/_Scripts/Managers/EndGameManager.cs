@@ -9,11 +9,14 @@ public class EndGameManager : MonoBehaviour
     public static EndGameManager Instance;
 
     private PanelController _panelController;
-    private TextMeshProUGUI scoreTextComponenet;
+    private TextMeshProUGUI _scoreTextComponenet;
+    private PlayerStats _player;
+    private RewardedAd _rewardAd;
 
-    private int _score;
     [HideInInspector] public string LvlUnlock = "LevelUnlock";
+    public int _score;
     public bool gameOver;
+    public bool possibleWin;
 
     private void Awake()
     {
@@ -31,7 +34,7 @@ public class EndGameManager : MonoBehaviour
     public void UpdateScore(int addScore)
     {
         _score += addScore;
-        scoreTextComponenet.text = "Score: " + _score;
+        _scoreTextComponenet.text = "Score: " + _score;
     }
 
     public void StartResolveFunction()
@@ -48,19 +51,23 @@ public class EndGameManager : MonoBehaviour
 
     public void ResolveGame()
     {
-        if(gameOver == false)
+        if(possibleWin == true && gameOver == false)
         {
             WinGame();
         }
-        else
+        else if(possibleWin == false && gameOver == true)
         {
+            AdLoseGame();
+        }
+        else if(possibleWin == true && gameOver == true)
+        { 
             LoseGame();
         }
     }
 
     public void WinGame()
     {
-
+        _player.canTakeDmg = false;
 
         ScoreSet();
         _panelController.ActivateWin();
@@ -75,6 +82,20 @@ public class EndGameManager : MonoBehaviour
     {
         ScoreSet();
         _panelController.ActivateLose();
+    }
+
+    public void AdLoseGame()
+    {
+        ScoreSet();
+        if(_rewardAd.adNumber > 0 )
+        {
+            _rewardAd.adNumber -= 1;
+            _panelController.ActivateAdLose();
+        }
+        else
+        {
+            _panelController.ActivateLose();
+        }
     }
 
     private void ScoreSet()
@@ -96,6 +117,16 @@ public class EndGameManager : MonoBehaviour
 
     public void RegisterScoreText(TextMeshProUGUI scoreTextComp)
     {
-        scoreTextComponenet = scoreTextComp;
+        _scoreTextComponenet = scoreTextComp;
+    }
+
+    public void RegisterPlayerStats(PlayerStats statsPlayer)
+    {
+        _player = statsPlayer;
+    }
+
+    public void RegisterRewardedAd(RewardedAd ad)
+    {
+        _rewardAd = ad;
     }
 }

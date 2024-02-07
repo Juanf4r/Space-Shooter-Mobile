@@ -899,11 +899,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: bb4da1fa-c0b6-41da-97ba-b45e85542812
+  cloudProjectId: 1151c53f-0fe5-4900-abc4-90a90bc94678
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Space-Shooter-Mobile
-  organizationId: johny_2004
+  projectName: Space Shooter Mobile
+  organizationId: juanf4r_dev
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
