@@ -1601,6 +1601,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3474b34bd005afb46a109b79d33a81e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1784464595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1624370721702406989, guid: 5718e171eabe0b1468c5196dc899bb0e, type: 3}
+  m_PrefabInstance: {fileID: 1600422245112651361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1865105343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,6 +2296,10 @@ PrefabInstance:
       propertyPath: loseScreen
       value: 
       objectReference: {fileID: 1282249925}
+    - target: {fileID: 2312630234321408288, guid: d0a3e61452c257a44b223c7536ee18d8, type: 3}
+      propertyPath: adLoseScreen
+      value: 
+      objectReference: {fileID: 1784464595}
     - target: {fileID: 4729822253143396928, guid: d0a3e61452c257a44b223c7536ee18d8, type: 3}
       propertyPath: m_Name
       value: PanelController
