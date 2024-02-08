@@ -67,6 +67,8 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             Time.timeScale = 1;
             //player es del juego de Space Shooter, no se necesita
             player.SetActive(true);
+
+            //Aqui escribimos la recompensa que el jugador debe de conseguir
             bannerAd.LoadBannerAd();
 
             LoadAd();
